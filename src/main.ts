@@ -41,8 +41,7 @@ async function checkForUpdates() {
               progressDiv.textContent = 'Preparing update...'
               break
             case 'Progress':
-              const percent = Math.round((progress.data.chunkLength / progress.data.contentLength) * 100)
-              progressDiv.textContent = `Downloading: ${percent}%`
+              progressDiv.textContent = `Downloading update...`
               break
             case 'Finished':
               progressDiv.textContent = 'Update downloaded! Restarting...'
