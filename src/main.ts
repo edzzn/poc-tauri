@@ -1,4 +1,5 @@
 import { invoke } from "@tauri-apps/api/core";
+import { app } from '@tauri-apps/api';
 
 let greetInputEl: HTMLInputElement | null;
 let greetMsgEl: HTMLElement | null;
@@ -12,6 +13,12 @@ async function greet() {
   }
 }
 
+async function getVersionInfo() {
+  // Get app version from Tauri
+  const version = await app.getVersion();
+  document.getElementById('app-version')!.textContent = version;
+}
+
 window.addEventListener("DOMContentLoaded", () => {
   greetInputEl = document.querySelector("#greet-input");
   greetMsgEl = document.querySelector("#greet-msg");
@@ -19,4 +26,5 @@ window.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
     greet();
   });
+  getVersionInfo();
 });
