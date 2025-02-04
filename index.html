@@ -16,6 +16,15 @@
       <p>Version: <span id="app-version">Loading...</span></p>
     </div>
 
+    <div>
+      <button id="toggle-log">Show Change Log</button>
+      <div id="change-log" style="display: none;">
+        <ul>
+          <li>0.1.11: Bumped version</li>
+        </ul>
+      </div>
+    </div>
+
     <div class="row">
       <a href="https://vitejs.dev" target="_blank">
         <img src="/src/assets/vite.svg" class="logo vite" alt="Vite logo" />
@@ -35,6 +44,19 @@
     </form>
     <p id="greet-msg"></p>
   </main>
+
+  <script>
+    document.getElementById('toggle-log').addEventListener('click', function () {
+      const log = document.getElementById('change-log');
+      if (log.style.display === 'none') {
+        log.style.display = 'block';
+        this.textContent = 'Hide Change Log';
+      } else {
+        log.style.display = 'none';
+        this.textContent = 'Show Change Log';
+      }
+    });
+  </script>
 </body>
 
 </html>
