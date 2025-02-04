@@ -77,26 +77,6 @@ function startPeriodicUpdateCheck() {
   setInterval(checkForUpdates, 60 * 60 * 1000);
 }
 
-// Add manual check function
-async function manualCheckForUpdates() {
-  const progressDiv = document.createElement('div')
-  progressDiv.id = 'update-progress'
-  progressDiv.textContent = 'Checking for updates...'
-  document.body.appendChild(progressDiv)
-
-  try {
-    const update = await check()
-    if (!update) {
-      progressDiv.textContent = 'You have the latest version!'
-      setTimeout(() => progressDiv.remove(), 2000)
-    }
-  } catch (error) {
-    progressDiv.textContent = 'Error checking for updates'
-    setTimeout(() => progressDiv.remove(), 2000)
-    console.error('Update error:', error)
-  }
-}
-
 window.addEventListener("DOMContentLoaded", () => {
   greetInputEl = document.querySelector("#greet-input");
   greetMsgEl = document.querySelector("#greet-msg");
